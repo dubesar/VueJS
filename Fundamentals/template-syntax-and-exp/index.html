@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Syntax and Expressions</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{header}}</h1> <!--thus works-->
+        <h1>{{ header.toLocaleUpperCase() }}</h1>  <!--this works-->
+        <!--Multiline JS doesn't works in this case eg:-
+            <h1>{{ header; header.toLocaleUpperCase(); }}</h1>
+        -->
+        <!--Also defining variables doesn't work in this case for eg:-
+            <h1>{{ var head = header.toLocaleUpperCase(); }}</h1>
+            <h1>{{ if(head) return head;}}</h1>
+            
+            the above stuff doesn't work.
+        -->
+        <!--Using shorthand syntax such as ES6 for conditional rendering or mapping for 
+            loops works great here. for eg:-
+        -->
+        <h1>{{check ? check : "Null"}}</h1>
+    
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                header: "Vue is ready",
+                check: null
+            }
+        })
+    </script>
+</body>
+</html>
